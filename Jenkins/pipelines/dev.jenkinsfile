@@ -1,22 +1,18 @@
 
-pipeline { 
-    agent any  
-    stages { 
-        stage('CheckOut') { 
-            steps { 
-               checkout([
-               $class: 'GitSCM', 
-               branches: [[name: '*/master']], 
-               doGenerateSubmoduleConfigurations: false, 
-               extensions: [], 
-               submoduleCfg: [], 
-               userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
-               ]) 
-               echo 'This is a minimal pipeline.' 
+@Library('jenkins-library@master') _
+
+pipeline {
+    agent maven
+    stages {
+        stage('Git Checkout') {
+            steps {
+            gitCheckout(
+                branch: "master",
+                url: "https://github.com/spring-projects/spring-petclinic.git"
+            )
             }
         }
     }
 }
-
 
 
