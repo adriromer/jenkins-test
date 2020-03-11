@@ -2,7 +2,9 @@
 @Library('mylibraries@master') _
 
 pipeline {
-    agent maven
+    agent{
+         label maven
+         } 
     stages {
         stage('Git Checkout') {
             steps {
