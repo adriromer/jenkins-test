@@ -1,0 +1,34 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  creationTimestamp: 
+  labels:
+    app: demo
+  name: test
+  namespace: ansible
+  resourceVersion: 
+  selfLink: 
+  uid: 
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: {}
+  output: {}
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      ref: master
+      uri: 'https://github.bancogalicia.com.ar/devops-master/lib'
+    sourceSecret:
+      name: githubpusher
+    type: Git
+  strategy:
+    jenkinsPipelineStrategy:
+      env:
+      jenkinsfilePath: pipelines/deployment/2dev/Jenkinsfile
+    type: JenkinsPipeline
+  successfulBuildsHistoryLimit: 5
+  triggers: []
+status:
+
