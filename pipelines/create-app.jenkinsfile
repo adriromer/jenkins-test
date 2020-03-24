@@ -44,9 +44,9 @@ pipeline {
             stage("Application creation Preparation") {
                 steps {
                     script {  
-                        galCreatePrepare("${TECH}")
-                        //funcion galParser parsea url
-                        def ObjDatos=galParser("${env.GITURL}")
+                        CreatePrepareages("${TECH}")
+                        //funcion Parser parsea url
+                        def ObjDatos=Parser("${env.GITURL}")
                         env.DEVOPS=ObjDatos[2] // url de la config
                         env.PROYECTO=ObjDatos[0] //nombre del proyecto
                         env.APP_NAME=ObjDatos[1] //asigno nombre de la app 
