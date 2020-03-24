@@ -1,8 +1,13 @@
-
-@Library('mylibraries@master') _
-
 pipeline {
-    agent { label "maven" } 
+       agent any
+        options {
+            skipDefaultCheckout()
+            disableConcurrentBuilds()
+            timeout(5)
+            buildDiscarder(logRotator(numToKeepStr: '5'))
+            ansiColor('xterm')  
+        }
+       agent { label "maven" } 
     stages {
         stage('Git Checkout') {
             steps {
