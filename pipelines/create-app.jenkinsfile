@@ -31,12 +31,12 @@ pipeline {
     				    env.VERACODE_ID= userInput ['VERACODE']
     				    env.TECH= userInput ['TECNO']
 			      	    // show user input //
-			            galMessages("User input:","title")
-			            galMessages("GIT URL: ${GITURL}","info")
-			            galMessages("HOOK TEAMS: ${HOOKTEAMS}","info")
-			            galMessages("VERACODE ID: ${VERACODE_ID}","info")
-			            galMessages("TECNOLOGY: ${TECH}","info")
-			      	    galMessages("Some other parameters may be requestede depending your selection","title")
+			            Messages("User input:","title")
+			            Messages("GIT URL: ${GITURL}","info")
+			            Messages("HOOK TEAMS: ${HOOKTEAMS}","info")
+			            Messages("VERACODE ID: ${VERACODE_ID}","info")
+			            Messages("TECNOLOGY: ${TECH}","info")
+			      	    Messages("Some other parameters may be requestede depending your selection","title")
 			            // start selection //
                     }
                 }
@@ -63,17 +63,17 @@ pipeline {
           }
           post {
                  always {
-                     galMessages("Run completed","info")
-                     galMessages("Cleaning Workspace","info")    
+                     Messages("Run completed","info")
+                     Messages("Cleaning Workspace","info")    
                      cleanWs() 
                 
                          }
                   success { 
-                      galMessages("Successfully!","info")
+                      Messages("Successfully!","info")
                     // galBackupALL()
                           }
                   failure {
-                      galMessages("Failed!","error")
+                      Messages("Failed!","error")
                           }
                  }
   }
