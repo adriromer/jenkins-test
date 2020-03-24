@@ -44,7 +44,7 @@ pipeline {
             stage("Application creation Preparation") {
                 steps {
                     script {  
-                        CreatePrepareages("${TECH}")
+                        CreatePrepare("${TECH}")
                         //funcion Parser parsea url
                         def ObjDatos=Parser("${env.GITURL}")
                         env.DEVOPS=ObjDatos[2] // url de la config
@@ -56,7 +56,7 @@ pipeline {
             stage("Create App DEV"){
                   steps{
                       script{
-                                galCreate("${DST_CLUSTER_URL_DEV}","${DST_CLUSTER_TOKEN_DEV}","${PROYECTO}-dev","${APP_NAME}","dev","${IS}","${GITURL}","master","${LANGUAGE}","${TOOL}","${HOOKTEAMS}","${VERACODE_ID}")
+                                Create("${DST_CLUSTER_URL_DEV}","${DST_CLUSTER_TOKEN_DEV}","${PROYECTO}-dev","${APP_NAME}","dev","${IS}","${GITURL}","master","${LANGUAGE}","${TOOL}","${HOOKTEAMS}","${VERACODE_ID}")
                             }
 		                }
                 }
