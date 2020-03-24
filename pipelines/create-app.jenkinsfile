@@ -5,7 +5,7 @@ pipeline {
             disableConcurrentBuilds()
             timeout(5)
             buildDiscarder(logRotator(numToKeepStr: '5'))
-            ansiColor('xterm') 
+            
         }
         environment {      
             DST_CLUSTER_URL_DEV = "insecure://ocp-dev.bancogalicia.com.ar"
