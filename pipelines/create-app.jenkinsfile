@@ -65,7 +65,7 @@ pipeline {
                  always {
                      Messages("Run completed","info")
                      Messages("Cleaning Workspace","info")    
-                     cleanWs() 
+                     
                 
                          }
                   success { 
