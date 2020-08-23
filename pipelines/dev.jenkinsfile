@@ -5,7 +5,6 @@ pipeline {
             disableConcurrentBuilds()
             timeout(5)
             buildDiscarder(logRotator(numToKeepStr: '5'))
-            ansiColor('xterm')  
         }
        agent { label "maven" } 
     stages {
