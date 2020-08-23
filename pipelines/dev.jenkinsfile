@@ -6,7 +6,6 @@ pipeline {
             timeout(5)
             buildDiscarder(logRotator(numToKeepStr: '5'))
         }
-       agent { label "maven" } 
     stages {
         stage('Git Checkout') {
             steps {
