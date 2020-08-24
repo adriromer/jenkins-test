@@ -1,13 +1,5 @@
 package galicia;
 
-import com.cloudbees.groovy.cps.NonCPS
-
-import hudson.tasks.junit.TestResultAction
-
-import jenkins.model.Jenkins
-
-import org.apache.commons.io.IOUtils
-import org.jenkinsci.plugins.workflow.steps.MissingContextVariableException
 
 def enviaremail (String AUTORIZANTEMAIL,String PROYECTO, String APP_NAME, String BUILD_NUMBER, String BUILD_URL)
 {
