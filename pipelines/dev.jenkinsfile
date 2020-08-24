@@ -12,7 +12,11 @@ pipeline {
                                 script{
                                         cleanWs()
                                         library changelog: false, identifier: 'mylibrary@master', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: 'GitHubPusher', remote: 'https://github.com/adriromer/jenkins-test.git', traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'], [$class: 'CleanAfterCheckoutTrait']]])
-    
+                                }
+                        }
+                }
+
+
     stages {
         stage('Git Checkout') {
             steps {
