@@ -21,7 +21,7 @@ pipeline {
             steps {
                                 script{ 
 
-                                        getcodeSCM('https://github.com/adriromer/jenkins-test.git','master','githubpusher')                                  
+                                        getcodeSCM('https://github.com/adriromer/jenkins-test.git','master','ansible-githubpusher')                                  
  
                         
                                 }                    
