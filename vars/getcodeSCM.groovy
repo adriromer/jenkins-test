@@ -1,4 +1,4 @@
-import galicia.*;      
+import org.myLibraries.*;      
 
 def call(String repo,String branch,String cred){
 

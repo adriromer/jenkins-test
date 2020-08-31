@@ -1,4 +1,4 @@
-package galicia;
+package org.myLibraries;
 
 import com.cloudbees.groovy.cps.NonCPS
 
