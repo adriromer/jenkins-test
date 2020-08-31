@@ -11,7 +11,7 @@ pipeline {
         stage ("Load customed libraries"){
                         steps{
                                 script{
-                                        library changelog: false, identifier: 'galicia@master', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: 'GitHubPusher', remote: 'https://github.com/adriromer/jenkins-test.git', traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'], [$class: 'CleanAfterCheckoutTrait']]])
+                                        library changelog: false, identifier: 'galicia@master', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: 'githubpusher', remote: 'https://github.com/adriromer/jenkins-test.git', traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'], [$class: 'CleanAfterCheckoutTrait']]])
                                 }
                         }
                 }
@@ -21,7 +21,7 @@ pipeline {
             steps {
                                 script{ 
 
-                                        getcodeSCM('https://github.com/adriromer/jenkins-test.git','master','GitHubPusher')                                  
+                                        getcodeSCM('https://github.com/adriromer/jenkins-test.git','master','githubpusher')                                  
  
                         
                                 }                    
