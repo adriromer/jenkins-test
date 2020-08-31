@@ -1,4 +1,4 @@
-import galicia.Utilidades;      
+import galicia.*;      
 
 def call(String repo,String branch,String cred){
 
