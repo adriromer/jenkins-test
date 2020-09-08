@@ -19,7 +19,7 @@ pipeline {
             stage("Global infomation Input") {
                 steps {
                     script {   
-                        library changelog: false, identifier: 'galicia@master', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: "${GIT_CRED}", remote: 'https://github.bancogalicia.com.ar/devops-master/lib', traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'], [$class: 'CleanAfterCheckoutTrait']]])
+                        library changelog: false, identifier: 'galicia@master', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: 'githubpusher', remote: 'https://github.com/adriromer/jenkins-test.git', traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'], [$class: 'CleanAfterCheckoutTrait']]])
 
                         // input datos
                         def userInput = input(
