@@ -14,9 +14,12 @@ pipeline {
         }
 
 
+
+         stages { 
+            stage("Global infomation Input") {
                 steps {
                     script {   
-                        library changelog: false, identifier: 'galicia@master', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: 'githubpusher', remote: 'https://github.com/adriromer/jenkins-test.git', traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'], [$class: 'CleanAfterCheckoutTrait']]])  
+                        library changelog: false, identifier: 'galicia@master', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: "${GIT_CRED}", remote: 'https://github.bancogalicia.com.ar/devops-master/lib', traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'], [$class: 'CleanAfterCheckoutTrait']]])
 
                         // input datos
                         def userInput = input(
@@ -36,14 +39,15 @@ pipeline {
 			
 			env.TECH= userInput ['TECNO']
 			// show user input //
-			messages("User input:","title")
-			messages("GIT URL: ${GITURL}","info")
-			messages("HOOK TEAMS: ${HOOKTEAMS}","info")
-			messages("VERACODE ID: ${VERACODE_ID}","info")
-			messages("TECNOLOGY: ${TECH}","info")
-			messages("Some other parameters may be requestede depending your selection","title")
+			galMessages("User input:","title")
+			galMessages("GIT URL: ${GITURL}","info")
+			galMessages("HOOK TEAMS: ${HOOKTEAMS}","info")
+			galMessages("VERACODE ID: ${VERACODE_ID}","info")
+			galMessages("TECNOLOGY: ${TECH}","info")
+			galMessages("Some other parameters may be requestede depending your selection","title")
 			// start selection //
                     }
                 }
             }
-
+         }
+}        
