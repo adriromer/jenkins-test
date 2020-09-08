@@ -1,0 +1,49 @@
+pipeline {
+        agent { label "maven" }
+        options {
+            skipDefaultCheckout()
+            disableConcurrentBuilds()
+            timeout(5)
+            buildDiscarder(logRotator(numToKeepStr: '5'))
+        }
+
+        environment {
+            DST_CLUSTER_URL_DEV = "insecure://ocp-dev.bancogalicia.com.ar"
+            DST_CLUSTER_TOKEN_DEV = credentials("cross-project-dev-token")
+            GIT_CRED="GitHubPusher"
+        }
+
+
+                steps {
+                    script {   
+                        library changelog: false, identifier: 'galicia@master', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: 'githubpusher', remote: 'https://github.com/adriromer/jenkins-test.git', traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'], [$class: 'CleanAfterCheckoutTrait']]])  
+
+                        // input datos
+                        def userInput = input(
+                            id: 'userInput', message: 'Global infomation for new application Input: ', parameters: [
+			                [$class: 'StringParameterDefinition', description: 'URL Git Repository: ', defaultValue: "Git url", name: 'GITURL'],
+			                [$class:'ChoiceParameterDefinition', description: 'Select Tecnology: ', choices: "Java\nPython\nReact\nNodejs\nNetcore\n", name: 'TECNO'],
+                            [$class:'StringParameterDefinition', description: 'Select Veracode ID if known: ', defaultValue: "nothing", name: 'VERACODE'],
+                            [$class: 'StringParameterDefinition', description: 'WebHook Teams if known: ', name: 'HOOK']
+                        ])
+                        env.GITURL= userInput ['GITURL']
+			env.HOOKTEAMS= userInput ['HOOK']
+    			env.VERACODE_ID= userInput ['VERACODE']
+    			if(VERACODE_ID == "") 
+			{
+			    env.VERACODE_ID="nothing"
+			}
+			
+			env.TECH= userInput ['TECNO']
+			// show user input //
+			messages("User input:","title")
+			messages("GIT URL: ${GITURL}","info")
+			messages("HOOK TEAMS: ${HOOKTEAMS}","info")
+			messages("VERACODE ID: ${VERACODE_ID}","info")
+			messages("TECNOLOGY: ${TECH}","info")
+			messages("Some other parameters may be requestede depending your selection","title")
+			// start selection //
+                    }
+                }
+            }
+    }
