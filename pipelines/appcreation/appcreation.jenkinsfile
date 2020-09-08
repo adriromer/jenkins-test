@@ -39,12 +39,12 @@ pipeline {
 			
 			env.TECH= userInput ['TECNO']
 			// show user input //
-			galMessages("User input:","title")
-			galMessages("GIT URL: ${GITURL}","info")
-			galMessages("HOOK TEAMS: ${HOOKTEAMS}","info")
-			galMessages("VERACODE ID: ${VERACODE_ID}","info")
-			galMessages("TECNOLOGY: ${TECH}","info")
-			galMessages("Some other parameters may be requestede depending your selection","title")
+			messages("User input:","title")
+			messages("GIT URL: ${GITURL}","info")
+			messages("HOOK TEAMS: ${HOOKTEAMS}","info")
+			messages("VERACODE ID: ${VERACODE_ID}","info")
+			messages("TECNOLOGY: ${TECH}","info")
+			messages("Some other parameters may be requestede depending your selection","title")
 			// start selection //
                     }
                 }
