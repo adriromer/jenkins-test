@@ -39,12 +39,12 @@ pipeline {
 			
 			env.TECH= userInput ['TECNO']
 			// show user input //
-			messages("User input:","title")
-			messages("GIT URL: ${GITURL}","info")
-			messages("HOOK TEAMS: ${HOOKTEAMS}","info")
-			messages("VERACODE ID: ${VERACODE_ID}","info")
-			messages("TECNOLOGY: ${TECH}","info")
-			messages("Some other parameters may be requestede depending your selection","title")
+			Messages("User input:","title")
+			Messages("GIT URL: ${GITURL}","info")
+			Messages("HOOK TEAMS: ${HOOKTEAMS}","info")
+			Messages("VERACODE ID: ${VERACODE_ID}","info")
+			Messages("TECNOLOGY: ${TECH}","info")
+			Messages("Some other parameters may be requestede depending your selection","title")
 			// start selection //
                     }
                 }
